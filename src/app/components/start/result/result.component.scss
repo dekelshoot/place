@@ -1,0 +1,47 @@
+@font-face {
+  font-family: 'Product';
+  font-weight: 700;
+  src: url('../../../../assets/fonts/Product_Sans_Bold.ttf') format('truetype')
+}
+
+.search-container {
+  width: 100%;
+
+  .search-bar {
+    display: flex;
+    gap: 25px;
+    width: 100%;
+
+    .title {
+      margin-bottom: 20px;
+      font-family: 'Product', sans-serif;
+      font-size: 30px;
+      background: -webkit-linear-gradient(#051e34, #051e34);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .search {
+      width: 600px;
+    }
+  }
+}
+
+
+@media (max-width: 600px) {
+  .search-container {
+    .search-bar {
+      display: flex;
+      gap: 25px;
+      width: 100%;
+
+      .title {
+        display: none;
+      }
+
+      .search {
+        width: 100%;
+      }
+    }
+  }
+}
