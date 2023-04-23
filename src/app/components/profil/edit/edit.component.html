@@ -1,0 +1,179 @@
+<app-header></app-header>
+<br id="head">
+
+<div class="container">
+  <div class="row flex-lg-nowrap">
+
+
+    <div class="col">
+      <div class="row">
+        <div class="col mb-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="e-profile">
+                <div class="row">
+                  <div class="col-12 col-sm-auto mb-3">
+                    <div class="mx-auto" style="width: 140px;">
+                      <div class="d-flex justify-content-center align-items-center rounded"
+                        style="height: 140px; background-color: rgb(233, 236, 239);">
+                        <span *ngIf="!dealer.profile_picture"
+                          style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>
+                        <img *ngIf="dealer.profile_picture" [src]="db+dealer.profile_picture" width="140" height="140"
+                          alt="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                    <div class="text-center text-sm-left mb-2 mb-sm-0">
+                      <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap"></h4>
+                      <p class="mb-0">{{dealer.last_name}} {{dealer.first_name}}</p>
+                      <div class="text-muted"><small>{{dealer.email}}</small></div>
+                      <div class="mb-2" *ngIf="errorMessagePicture">
+                        <p class="text-danger">{{errorMessagePicture}}</p>
+                      </div>
+                      <div class="mb-2" *ngIf="successMessagePicture">
+                        <p class="text-success">{{successMessagePicture}}</p>
+                      </div>
+                      <div class="mt-2">
+                        <!-- <button class="btn btn-primary" type="button">
+                          <i class="bi bi-camera"></i>
+                          <span>Change Photo</span>
+                        </button> -->
+                        <div class="input" *ngIf="!pictureLoading">
+                          <button class="btn  btn-primary"><i class="bi bi-camera"> </i> Change Photo </button>
+                          <input type="file" (change)="detectFiles($event)" type="file" accept="image/*">
+                        </div>
+                        <app-spinner *ngIf="pictureLoading"></app-spinner>
+                      </div>
+                    </div>
+                    <div class="text-center text-sm-right">
+                      <span class="badge badge-secondary">{{dealer.admin==true?"administrateur":"utilisateur"}}</span>
+                      <div class="text-muted"><small>Joined {{dealer.date_joined}}</small></div>
+                    </div>
+                  </div>
+                </div>
+                <ul class="nav nav-tabs">
+                  <li class="nav-item"><a href="" class="active nav-link">Settings</a></li>
+                </ul>
+                <div class="tab-content pt-3">
+                  <div class="mb-2" *ngIf="errorMessageProfile">
+                    <p class="text-danger">{{errorMessageProfile}}</p>
+                  </div>
+                  <div class="mb-2" *ngIf="successMessageProfile">
+                    <p class="text-success">{{successMessageProfile}}</p>
+                  </div>
+                  <div class="tab-pane active">
+                    <form class="form" novalidate="" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+                      <div class="row">
+                        <div class="col">
+                          <div class="row">
+                            <div class="col">
+                              <div class="form-group">
+                                <label>Nom</label>
+                                <input class="form-control" type="text" name="name" formControlName="first_name">
+                              </div>
+                            </div>
+                            <div class="col">
+                              <div class="form-group">
+                                <label>Prenom</label>
+                                <input class="form-control" type="text" name="username" formControlName="last_name">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <div class="form-group">
+                                <label>Username</label>
+                                <input class="form-control" type="text" name="username" username="username"
+                                  formControlName="username">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <div class="form-group">
+                                <label>Email</label>
+                                <input class="form-control" type="text" placeholder="user@example.com"
+                                  formControlName="email">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col d-flex justify-content-start">
+                          <button class="btn btn-primary" type="submit" [disabled]="editForm.invalid"
+                            *ngIf="!profileLoading">Save
+                            Changes</button>
+                          <app-spinner *ngIf="profileLoading"></app-spinner>
+                        </div>
+
+
+                      </div>
+                    </form>
+
+                    <br><br>
+
+                    <form [formGroup]="passwordForm" (ngSubmit)="onSubmitPassword()">
+                      <br><br>
+                      <div class="row">
+                        <div class="col-12 col-sm-6 mb-3">
+                          <div class="mb-2"><b>Change Password</b></div>
+                          <div class="mb-2" *ngIf="errorMessagePassword">
+                            <p class="text-danger">{{errorMessagePassword}}</p>
+                          </div>
+                          <div class="mb-2" *ngIf="successMessagePassword">
+                            <p class="text-success">{{successMessagePassword}}</p>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <div class="form-group">
+                                <label>Current Password</label>
+                                <input class="form-control" type="password" placeholder=""
+                                  formControlName="currentPassword">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <div class="form-group">
+                                <label>New Password</label>
+                                <input class="form-control" type="password" placeholder=""
+                                  formControlName="newPassword">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <div class="form-group">
+                                <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
+                                <input class="form-control" type="password" placeholder=""
+                                  formControlName="confirmPasword">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col d-flex justify-content-start">
+                          <button class="btn btn-primary" type="submit" *ngIf="!passwordLoading"
+                            [disabled]="passwordForm.invalid">Save
+                            Changes</button>
+                          <app-spinner *ngIf="passwordLoading"></app-spinner>
+                        </div>
+                      </div>
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<br><br><br>

@@ -1,0 +1,33 @@
+.container {
+  width: 100%;
+
+  .title {
+    margin-bottom: 20px;
+    font-family: 'Product', sans-serif;
+    font-size: 30px;
+    color: #051e34;
+    font-weight: bold;
+
+  }
+
+  .history {
+    width: 100%;
+
+
+    table {
+      tbody {
+        cursor: pointer;
+
+        :hover {
+          background-color: #051e34;
+          color: white;
+        }
+      }
+
+    }
+
+    .search {
+      width: 600px;
+    }
+  }
+}

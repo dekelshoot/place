@@ -1,0 +1,32 @@
+<nav class="navbar bg-body-tertiary">
+  <div class="container">
+    <a class="navbar-brand" (click)="this.routerService.back()">
+      <span class="d-flex"><i *ngIf="this.router.url!='/start'" class="bi bi-arrow-left-circle-fill"></i>
+        <i *ngIf="this.router.url=='/start'" class="bi bi-geo-alt-fill"></i>
+        <p> Place.cm</p>
+      </span>
+    </a>
+    <form class="d-flex" role="search">
+      <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button> -->
+      <div class="dropdown text-end align-content-end">
+        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <!-- <img *ngIf="!dealer.profile_picture" src="../../../assets/profil.jpeg" alt="mdo" width="32" height="32"
+            class="rounded-circle"> -->
+          <i *ngIf="!dealer.profile_picture" style="font-size: 25px;" class="bi bi-person-fill "></i>
+          <img *ngIf="dealer.profile_picture" [src]="db+dealer.profile_picture" alt="mdo" width="32" height="32"
+            class="rounded-circle">
+        </a>
+        <ul class="dropdown-menu text-small">
+          <li><a class="dropdown-item">Settings</a></li>
+          <li (click)="this.routerService.route('/profil')"><a class="dropdown-item">Profile</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" (click)="signOut()">Sign out</a></li>
+        </ul>
+      </div>
+    </form>
+  </div>
+</nav>

@@ -1,0 +1,44 @@
+<app-header></app-header>
+
+<div class="container ">
+  <div class="title">Historique de recherche</div>
+  <div class="history">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"><i class="bi bi-search"></i></th>
+          <th scope="col">query</th>
+          <th scope="col">date send</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of history.results" (click)="this.routerService.routeSearch(item.request)">
+          <th scope="row"><i class="bi bi-search"></i></th>
+          <td>{{item.request}}</td>
+          <td>{{item.date_send}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+    <app-spinner *ngIf="loading==true"></app-spinner>
+    <div *ngIf="loading==false && history.results.length==0"
+      class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+      <p class="text-danger">Votre
+        historique est vide</p>
+    </div>
+
+
+  </div>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li style="cursor: pointer;" class="page-item " [ngClass]="{'disabled': history.link_previous_page==null   }">
+        <button (click)="previousPage()" [disabled]="!history.link_previous_page"
+          class="btn page-link">Previous</button>
+      </li>
+      <li style="cursor: pointer;" class="page-item" [ngClass]="{'disabled': history.link_next_page==null   }">
+        <button (click)="nextPage()" [disabled]="!history.link_next_page" class="btn page-link">Next</button>
+      </li>
+    </ul>
+  </nav>
+</div>

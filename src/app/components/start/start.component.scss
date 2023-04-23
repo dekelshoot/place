@@ -1,0 +1,133 @@
+@font-face {
+  font-family: 'Product';
+  font-weight: 700;
+  src: url('../../../assets/fonts/Product_Sans_Bold.ttf') format('truetype')
+}
+
+.search-container {
+  width: 100%;
+  margin-top: 3%;
+  align-items: center;
+
+  .title {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    font-family: 'Product', sans-serif;
+    font-size: 100px;
+    background: -webkit-linear-gradient(#051e34, #051e34);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .recherche {
+    width: 50%;
+    height: 40px;
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: 20px;
+
+    input {
+      border: 0;
+      outline: 0;
+      width: 100%;
+      height: 100%;
+      padding-left: 50px;
+      background-color: rgb(234, 231, 231);
+      border-radius: 15px;
+      transition: all 0.5s;
+      // padding: 10px;
+    }
+
+    .bi {
+      position: absolute;
+      left: 0;
+      top: 0px;
+      margin-left: 12px;
+      padding: 8px;
+    }
+
+    .bi:hover {
+      background-color: rgb(196, 194, 194);
+      border-radius: 50px;
+    }
+  }
+
+  .boutons {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    gap: 25px;
+
+    .btn {
+      color: white;
+      border-radius: 5px;
+      background: linear-gradient(#051e34, #051e34);
+    }
+  }
+
+
+
+  .populaire {
+    margin: 0 auto;
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    .title {
+      margin: 0 auto;
+      margin-top: 15px;
+      font-size: 20px;
+      font-weight: 500;
+      background: -webkit-linear-gradient(#051e34, #051e34);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0;
+    }
+
+    .mots {
+      width: auto;
+
+      // align-items:stretch;
+      .mot {
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        border-radius: 20px;
+        padding: 7px;
+        color: #051e34;
+        margin: 1px;
+        // background-color: #051e34;
+        background-color: white;
+        border: 0.5px solid #051e34;
+      }
+    }
+  }
+}
+
+
+
+
+
+@media (max-width: 740px) {
+  .search-container {
+    .title {
+      font-size: 30px;
+    }
+
+    .recherche {
+      width: 95%;
+    }
+
+    .populaire {
+      width: 98%;
+    }
+
+  }
+}

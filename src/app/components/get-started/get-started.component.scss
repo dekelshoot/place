@@ -1,0 +1,23 @@
+.bg {
+  opacity: 0.2;
+  position: absolute;
+  left: 0;
+  top: -30px;
+  width: 100%;
+  height: auto;
+  z-index: -10;
+
+}
+
+.container {
+  border-radius: 15px;
+  // position: relative;
+  z-index: 100;
+  color: #051e34;
+
+  // background-image: url("../../../assets/yaounde.png");
+  .logo {
+    font-size: 60px;
+    color: #051e34;
+  }
+}

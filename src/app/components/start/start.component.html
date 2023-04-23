@@ -1,0 +1,29 @@
+<app-header></app-header>
+<div *ngIf="true" class="search-container container">
+  <div class="title">Place.com</div>
+
+  <div class=" form-group form-floating mb-3">
+    <div class="recherche ">
+      <app-search-bar></app-search-bar>
+    </div>
+  </div>
+  <br>
+  <div class="boutons">
+    <button class="btn" (click)="this.routerService.route('/history')">Recherches récentes</button>
+    <button class="btn">Près de moi</button>
+  </div>
+
+  <div class="populaire ">
+    <p class="title">Recherche populaire</p>
+    <div class="mots">
+      <button (click)="this.routerService.routeSearch(mot)" class="mot btn" *ngFor="let mot of mots; let i = index">
+        {{ mot }}
+      </button>
+    </div>
+  </div>
+
+
+</div>
+
+
+<br />
